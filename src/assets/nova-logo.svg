@@ -1,0 +1,21 @@
+<svg width="320" height="109" viewBox="0 0 320 109" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="109" rx="16" fill="transparent"/>
+  <g fill="#74C69D">
+    <circle cx="5" cy="20" r="5" />
+    <circle cx="24" cy="20" r="5" />
+    <circle cx="43" cy="20" r="5" />
+    <circle cx="62" cy="20" r="5" />
+    <circle cx="5" cy="43" r="5" />
+    <circle cx="24" cy="43" r="5" />
+    <circle cx="43" cy="43" r="5" />
+    <circle cx="62" cy="43" r="5" />
+    <circle cx="5" cy="66" r="5" />
+    <circle cx="24" cy="66" r="5" />
+    <circle cx="43" cy="66" r="5" />
+    <circle cx="62" cy="66" r="5" />
+  </g>
+  <path d="M79 76V20h7l28 35V20h7v56h-6L86 40v36h-7Z" fill="#191321"/>
+  <path d="M157.5 77c-17 0-28.5-12-28.5-29S140.5 19 157.5 19c16.9 0 28.5 12 28.5 29s-11.6 29-28.5 29Zm0-6.5c12.4 0 21-9 21-22.5s-8.6-22.5-21-22.5c-12.5 0-21 9-21 22.5s8.5 22.5 21 22.5Z" fill="#191321"/>
+  <path d="M216 20h9l22 46 31-66h10l-38 80h-6l-28-60Z" fill="#00B388"/>
+  <path d="M280 76l20-56h6l19 56h-7.8l-4.6-14h-20.2l-4.7 14H280Zm14.7-20h15.9l-7.8-23.7L294.7 56Z" fill="#2B1738"/>
+</svg>

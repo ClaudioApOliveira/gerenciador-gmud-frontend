@@ -1,0 +1,59 @@
+:root {
+  font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #111827;
+  background: #f4fbf8;
+  --brand-primary: #00b388;
+  --brand-primary-dark: #007a66;
+  --brand-accent: #2b1738;
+  --brand-dark: #181320;
+  --brand-soft: #74c69d;
+  --surface: #ffffff;
+  --text-muted: #667085;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100vh;
+}
+
+body {
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(116, 198, 157, 0.28), transparent 0 25%),
+    radial-gradient(circle at bottom right, rgba(0, 179, 136, 0.16), transparent 0 20%),
+    linear-gradient(180deg, #f7fcfa 0%, #edf7f3 100%);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--brand-dark);
+}
+
+a {
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
