@@ -1,4 +1,4 @@
-import { Navigate, createBrowserRouter } from 'react-router-dom'
+import { Navigate, createHashRouter } from 'react-router-dom'
 import { AppLayout } from './layouts/AppLayout'
 import { GmudCreatePage } from './pages/GmudCreatePage'
 import { GmudEditPage } from './pages/GmudEditPage'
@@ -7,7 +7,7 @@ import { LoginPage } from './pages/LoginPage'
 import { UserSettingsPage } from './pages/UserSettingsPage'
 import { isAuthenticated } from './services/auth'
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
     {
         path: '/login',
         element: isAuthenticated() ? <Navigate to="/gmuds" replace /> : <LoginPage />,
