@@ -33,8 +33,8 @@ api.interceptors.response.use(
             clearAuthSession()
             console.warn('Sessão não autorizada ou expirada.')
 
-            if (typeof globalThis.window !== 'undefined' && globalThis.window.location.pathname !== '/login') {
-                globalThis.window.location.href = '/login'
+            if (typeof globalThis.window !== 'undefined' && globalThis.window.location.hash !== '#/login') {
+                globalThis.window.location.hash = '#/login'
             }
         }
 

@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'bun:test'
-import { clearAuthSession, getAccessToken, isAuthenticated, saveAuthSession } from './auth'
+import { canEditGmuds, clearAuthSession, getAccessToken, getCurrentUserRole, isAuthenticated, saveAuthSession } from './auth'
 
 describe('auth session helpers', () => {
     beforeEach(() => {
@@ -47,6 +47,50 @@ describe('auth session helpers', () => {
 
         expect(isAuthenticated()).toBe(true)
         expect(getAccessToken()).toBeNull()
+    })
+
+    it('allows admin and manager to edit GMUDs', () => {
+        saveAuthSession({
+            user: {
+                id: '1',
+                nome: 'Administrador',
+                email: 'admin@empresa.com',
+                role: 'admin',
+            },
+        })
+
+        expect(getCurrentUserRole()).toBe('admin')
+        expect(canEditGmuds()).toBe(true)
+
+        saveAuthSession({
+            user: {
+                id: '2',
+                nome: 'Gerente',
+                email: 'manager@empresa.com',
+                role: 'manager',
+            },
+        })
+
+        expect(getCurrentUserRole()).toBe('manager')
+        expect(canEditGmuds()).toBe(true)
+    })
+
+    it('reads the role even when login response comes wrapped in data', () => {
+        saveAuthSession({
+            data: {
+                access_token: 'token-123',
+                refresh_token: 'refresh-123',
+                user: {
+                    id: '2',
+                    nome: 'Gerente',
+                    email: 'manager@empresa.com',
+                    role: 'manager',
+                },
+            },
+        } as never)
+
+        expect(getCurrentUserRole()).toBe('manager')
+        expect(canEditGmuds()).toBe(true)
     })
 
     it('clears the stored auth session on logout', () => {

@@ -4,15 +4,23 @@ import novaLogo from '../assets/nova-logo.svg'
 import { ButtonLink } from '../components/ui'
 import { i18n } from '../i18'
 import { authApi } from '../services/api'
-import { getAuthSession } from '../services/auth'
+import { getCurrentUser, getCurrentUserRole } from '../services/auth'
+import { UserRole } from '../services/userService'
 
 export function AppLayout() {
     const navigate = useNavigate()
     const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const currentRole = getAuthSession()?.user?.role?.toLowerCase() ?? ''
+    const currentUser = getCurrentUser()
+    const currentRole = getCurrentUserRole()
+    const displayRole =
+        currentRole === UserRole.Admin
+            ? 'Administrador'
+            : currentRole === UserRole.Manager
+                ? 'Gerente'
+                : 'Usuário comum'
     const menu = [
         { to: '/gmuds', label: i18n.layout.panel },
-        ...(currentRole === '' || currentRole === 'admin'
+        ...(currentRole === UserRole.Admin
             ? [{ to: '/usuarios/configuracao', label: i18n.layout.user }]
             : []),
     ]
@@ -59,6 +67,15 @@ export function AppLayout() {
                 </nav>
 
                 <div className="sidebar-footer">
+                    <div className="session-user-card">
+                        <span className="eyebrow">Sessão atual</span>
+                        <strong>{currentUser?.nome || 'Usuário autenticado'}</strong>
+                        <span className="session-user-email">{currentUser?.email || 'E-mail não informado'}</span>
+                        <span className={`user-role user-role--${currentRole || UserRole.Common}`}>
+                            {displayRole}
+                        </span>
+                    </div>
+
                     <span className="muted-text sidebar-mini-note">{i18n.layout.changesAndIms}</span>
                     <ButtonLink
                         variant="secondary"
